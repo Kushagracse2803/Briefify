@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Briefify - Free Text Summarizer</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Inline styles for button layout */
+    #uploadForm {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    #fileNameDisplay {
+      margin-left: 10px;
+      font-style: italic;
+      white-space: nowrap;
+    }
+    .paste-btn {
+      min-width: 160px;
+      font-family: 'Bradley Hand ITC', cursive, sans-serif;
+      background: #2e7d32; /* green */
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 14px;
+      padding: 10px 20px;
+      box-shadow: 0 2px 11px #79b474b0;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .paste-btn:hover:not(:disabled) {
+      background: #449d44;
+      color: #fff;
+    }
+    .paste-btn:disabled {
+      background: #a3d498;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-box">
+    <div class="header">
+      <img class="icon"
+           src="https://www.bing.com/th/id/OIP.BpyS5UV67y9XYhsNg0SiKgHaHa?w=183&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+           alt="Briefify Logo" />
+      <div class="headline">
+        <span class="title">Briefify</span>
+        <span class="subtitle">- Free Text Summarizer</span>
+      </div>
+    </div>
+
+    <div class="slider-row">
+      <span class="slider-label">Summary Length:</span>
+      <span class="slider-left">Short</span>
+      <input type="range" id="summarySlider" min="1" max="3" value="2" aria-label="Summary length" />
+      <span class="slider-right">Long</span>
+    </div>
+    
+    <div class="main-content">
+      <div class="left-panel">
+        <textarea id="input-text" placeholder='Enter or paste your text and "summarize"' rows="8"></textarea>
+      </div>
+
+      <div class="right-panel">
+        <div class="output-area" id="output-area"></div>
+      </div>
+    </div>
+
+    <form id="uploadForm" class="upload-form" enctype="multipart/form-data">
+      <input 
+        type="file" 
+        id="fileInput" 
+        name="file" 
+        accept=".pdf, .png, .jpg, .jpeg" 
+        style="display: none;" 
+      />
+      
+      <button type="button" class="upload-btn" id="uploadBtn">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/upload.png" alt="Upload Icon" class="upload-icon" />
+        Upload Doc
+      </button>
+      
+      <button type="button" class="paste-btn" id="pasteBtn" disabled>
+        Paste Extracted Text
+      </button>
+      
+      <span id="fileNameDisplay"></span>
+    </form>
+
+    <div class="summarize-btn-container">
+      <button class="summarize-btn" id="summarizeBtn">Summarize</button>
+    </div>
+  </div>
+
+  <script src="../static/js/script.js"></script>
+  <script>
+    const uploadBtn = document.getElementById('uploadBtn');
+    const pasteBtn = document.getElementById('pasteBtn');
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    const inputText = document.getElementById('input-text');
+    const outputArea = document.getElementById('output-area');
+
+    let selectedFile = null;
+
+    uploadBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        selectedFile = fileInput.files[0];
+        fileNameDisplay.textContent = selectedFile.name;
+        pasteBtn.disabled = false;
+      } else {
+        selectedFile = null;
+        fileNameDisplay.textContent = '';
+        pasteBtn.disabled = true;
+      }
+    });
+
+    pasteBtn.addEventListener('click', async () => {
+      if (!selectedFile) {
+        alert("Please select a file first.");
+        return;
+      }
+
+      // Clear previous text and output
+      inputText.value = "";
+      outputArea.textContent = "";
+
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      pasteBtn.disabled = true;
+      pasteBtn.textContent = "Extracting...";
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (data.extracted_text) {
+          inputText.value = data.extracted_text;
+        } else if (data.error) {
+          alert(data.error);
+        }
+      } catch (error) {
+        alert("Error uploading file.");
+        console.error(error);
+      } finally {
+        pasteBtn.disabled = false;
+        pasteBtn.textContent = "Paste Extracted Text";
+        fileInput.value = '';
+        fileNameDisplay.textContent = '';
+        selectedFile = null;
+        pasteBtn.disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>

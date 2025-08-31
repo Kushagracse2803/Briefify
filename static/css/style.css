@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css?family=Bradley+Hand+ITC');
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Bradley Hand ITC', cursive, sans-serif;
+}
+
+.main-box {
+  width: 99vw;
+  height: 98vh;
+  max-width: none;
+  margin: 0 auto;
+  border: 4px solid #000;
+  border-radius: 10px;
+  background: #fff;
+  padding: 2.5vw 2vw 0.8vw 2vw;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  height: auto;
+  border-radius: 10px;
+  user-select: none;
+}
+
+.headline {
+  text-align: center;
+}
+
+.title {
+  font-size: 3.3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  filter: drop-shadow(1px 2px 6px #d9f6e9);
+}
+
+.subtitle {
+  font-size: 1.35rem;
+  color: #567774;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.slider-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  margin: 34px 0 18px 0;
+}
+
+.slider-label {
+  font-size: 1.22rem;
+  color: #155b52;
+  font-weight: 700;
+}
+
+.slider-left,
+.slider-right {
+  font-size: 1.1rem;
+  color: #1b725d;
+}
+
+input[type=range] {
+  width: 220px;
+  appearance: none;
+  height: 7px;
+  background: #e8edef;
+  border-radius: 7px;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #008c4c;
+  border: 3px solid #dadada;
+  cursor: pointer;
+  box-shadow: 0 0 5px #008c4c70;
+  transition: background 0.2s;
+}
+
+input[type=range]:focus::-webkit-slider-thumb,
+input[type=range]:focus::-moz-range-thumb {
+  background: #23b677;
+}
+
+.main-content {
+  display: flex;
+  gap: 2.8vw;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  min-width: 340px;
+  min-height: 410px;
+  background: #e5fff5;
+  border: 4px solid #000;
+  border-radius: 12px;
+  box-shadow: 0 3px 17px #b3e9f78f;
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+}
+
+/* Enlarged left panel height */
+.left-panel {
+  min-width: 340px;
+  min-height: 430px;
+  background: #e5fff5;
+  border: 4px solid #000;
+  border-radius: 12px;
+  box-shadow: 0 3px 17px #b3e9f78f;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px 8px 12px; /* Small padding on all sides, including bottom */
+}
+
+/* Left panel textarea */
+.left-panel textarea {
+  width: 100%;
+  flex: 1 1 auto;   /* Grow to fill available vertical space */
+  min-height: 120px;
+  font-size: 1.08rem;
+  border: none;
+  border-radius: 10px;
+  padding: 2mm;
+  background: #e5fff5;
+  color: #063f35;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+textarea::placeholder {
+  color: #7a9a85;
+  font-size: 1.18rem;
+  font-style: italic;
+}
+
+textarea:focus {
+  background: #d2fdeb;
+}
+
+/* Style the output area with Times New Roman font, bold and font size 14px */
+.output-area {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 28px;
+  color: #063f35;
+  white-space: pre-wrap; /* Preserve line breaks */
+  padding: 1rem;         /* Optional: add some padding inside output */
+}
+
+.upload-btn-container {
+  margin-left: calc(2.8vw / 2);
+  margin-top: 10px;
+}
+
+.upload-btn {
+  min-width: 160px;
+  font-family: 'Bradley Hand ITC', cursive, sans-serif;
+  background: #226e58;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 11px #91ceb0b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.upload-btn:hover {
+  background: #1ca47c;
+  color: #fff;
+}
+
+.paste-btn {
+  min-width: 160px;
+  font-family: 'Bradley Hand ITC', cursive, sans-serif;
+  background: #2e7d32;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 11px #79b474b0;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.paste-btn:hover {
+  background: #449d44;
+  color: #fff;
+}
+
+.paste-btn:disabled {
+  background: #a3d498;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.upload-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.summarize-btn-container {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.summarize-btn {
+  min-width: 320px;
+  font-family: 'Bradley Hand ITC', cursive, sans-serif;
+  background: #226e58;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 18px;
+  padding: 20px 0;
+  cursor: pointer;
+  box-shadow: 0 3px 14px #91ceb0b0;
+  transition: background 0.18s, color 0.18s;
+}
+
+.summarize-btn:hover {
+  background: #1ca47c;
+  color: #fff;
+}

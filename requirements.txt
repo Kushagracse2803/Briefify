@@ -1,0 +1,11 @@
+flask
+transformers
+torch
+evaluate
+nltk
+pymupdf
+pytesseract
+Pillow
+sentencepiece
+absl-py
+rouge-score

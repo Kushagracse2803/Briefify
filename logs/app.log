@@ -1,0 +1,12 @@
+2025-08-31 16:06:15,577 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-31 16:06:15,581 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-31 16:06:15,592 - INFO -  * Restarting with stat
+2025-08-31 16:07:05,224 - WARNING -  * Debugger is active!
+2025-08-31 16:07:05,383 - INFO -  * Debugger PIN: 139-604-284
+2025-08-31 16:07:15,823 - INFO - 127.0.0.1 - - [31/Aug/2025 16:07:15] "GET / HTTP/1.1" 200 -
+2025-08-31 16:07:16,905 - INFO - 127.0.0.1 - - [31/Aug/2025 16:07:16] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-31 16:07:16,943 - INFO - 127.0.0.1 - - [31/Aug/2025 16:07:16] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-08-31 16:07:18,980 - INFO - 127.0.0.1 - - [31/Aug/2025 16:07:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-31 16:08:35,183 - INFO - 127.0.0.1 - - [31/Aug/2025 16:08:35] "POST /summarize HTTP/1.1" 200 -
+2025-08-31 16:11:15,357 - INFO - 127.0.0.1 - - [31/Aug/2025 16:11:15] "POST /summarize HTTP/1.1" 200 -
