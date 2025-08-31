@@ -1,7 +1,6 @@
 flask
 transformers
 torch
-evaluate
 nltk
 pymupdf
 pytesseract
@@ -9,3 +8,6 @@ Pillow
 sentencepiece
 absl-py
 rouge-score
+evaluate==0.4.0
+datasets==2.18.0
+pyarrow==14.0.2
