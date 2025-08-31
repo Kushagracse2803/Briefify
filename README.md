@@ -103,8 +103,3 @@ This project is licensed under the MIT License – see LICENSE for details.
 🔹 Export summaries in PDF/Docx
 
 # Summary 
-
-  # Screenshots
-
-  ![alt text](<Screenshot 2025-08-31 222040.png>)
-  ![alt text](<Screenshot 2025-08-31 222415.png>)
